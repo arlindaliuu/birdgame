@@ -6,7 +6,15 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject _cloudParticlePrefab;
-   private void OnCollisionEnter2D(Collision2D collision)
+
+    private void Update()
+    {
+        if (transform.position.y > 5.5 || transform.position.x < -11
+            || transform.position.x > 11 )
+        {
+            Destroy(gameObject);        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Bird bird = collision.collider.GetComponent<Bird>();
         if(bird != null)
